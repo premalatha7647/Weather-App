@@ -17,7 +17,6 @@ async function getUserAccess(data: any) {
 async function getUserList() {
   try {
     return await userApi.get('/users')
-    
   } catch (error) {
     const _error = error as AxiosError<string>
     return {

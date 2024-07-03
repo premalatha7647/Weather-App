@@ -19,7 +19,7 @@ export const useUsersStore = defineStore('user', () => {
       res.data.users.splice(0, 10).forEach((element: any) => {
         users.value.push(transformData(element))
       })
-      console.log(users.value)
+      console.log(users)
     })
   }
   return { users, getUserList }

@@ -3,7 +3,6 @@ import type { AxiosError } from 'axios'
 const { api, userApi } = { ...axios }
 async function getUserAccess(data: any) {
   try {
-    getUserList()
     return await api.post('/getUserAcess', data)
   } catch (error) {
     const _error = error as AxiosError<string>
@@ -17,8 +16,8 @@ async function getUserAccess(data: any) {
 
 async function getUserList() {
   try {
-    const response = await userApi.get('/users')
-    console.log(response)
+    return await userApi.get('/users')
+    
   } catch (error) {
     const _error = error as AxiosError<string>
     return {
@@ -30,5 +29,6 @@ async function getUserList() {
 }
 
 export default {
-  getUserAccess
+  getUserAccess,
+  getUserList
 }

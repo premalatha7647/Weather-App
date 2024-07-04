@@ -5,9 +5,6 @@
         <a-list-item>
           <span class="userList" @click="onListClick(item)">{{ item.firstName }}</span>
         </a-list-item>
-        <a-list-item>
-          <span class="userList" @click="onListClick(item)">{{ item.firstName }}</span>
-        </a-list-item>
       </template>
       <template #header>
         <div>User List</div>
@@ -19,14 +16,14 @@
 <script setup lang="ts">
 import UserTextField from '@/components/UserTextField.vue'
 import { useUsersStore } from '@/stores/users'
-import { onBeforeUpdate, onMounted, onUpdated, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const userStore = useUsersStore()
 const userData = ref()
 const isClicked = ref(false)
-onMounted(() => {
-  userStore.getUserList()
-  userStore.getUserList()
+onMounted(async () => {
+  await userStore.getUserList()
+  // const [acct, perm] = await Promise.all([userStore.getUserList(), userStore.getUserList()])
 })
 const userList = ref(userStore.users)
 const pagination = {
